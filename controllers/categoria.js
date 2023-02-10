@@ -8,8 +8,15 @@ const categoria = require('../models/categoria');
 
 const getCategoria = async(req = request, res = response) => {
 
+    const listaCategorias = await Promise.all([
+        Categoria.countDocuments(),
+        Categoria.find()
+    ]);
+
     res.json({
         msg: 'get Api - Controlador Categoria',
+        listaCategorias
+
     });
 }
 
